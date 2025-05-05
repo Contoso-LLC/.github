@@ -1,0 +1,21 @@
+name: CES-Base-Shared-AKS
+version: 1.0.0
+summary: A base shared environment for app development in Azuer Kubernetes Service (AKS) created by the Contoso Platform Engineering team.
+description: Deploys base Azure Kubernetes Cluster using Azure Deployment Environments. This will be a shared AKS environment and will include base monitoring via Application Insights and a shared container registry.
+runner: ARM
+templatePath: azuredeploy.json
+
+parameters:
+- id: "environmentName"
+  name: "Environment Name (e.g. testenv)"
+  description: "Name of the Environment"
+  type: string
+  required: true
+
+- id: "location"
+  name: "Region (e.g. eastus)"
+  description: "Location of the resources"
+  type: string
+  required: true
+
+

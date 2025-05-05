@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json#",
+  "policyType": "Custom",
+  "mode": "All",
+  "displayName": "App Service Naming Policy",
+  "description": "Enforces naming convention for app services: app-environment-workload-location.",
+  "policyRule": {
+    "if": {
+      "field": "type",
+      "equals": "Microsoft.Web/sites"
+    },
+    "then": {
+      "effect": "deny",
+      "details": {
+        "condition": {
+          "not": {
+            "like": [
+              "name",
+              "app-*-*-*"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

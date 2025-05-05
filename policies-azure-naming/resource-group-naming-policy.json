@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json#",
+  "policyType": "Custom",
+  "mode": "All",
+  "displayName": "Resource Group Naming Policy",
+  "description": "Enforces naming convention for resource groups: rg-environment-workload-location.",
+  "policyRule": {
+    "if": {
+      "field": "type",
+      "equals": "Microsoft.Resources/resourceGroups"
+    },
+    "then": {
+      "effect": "deny",
+      "details": {
+        "condition": {
+          "not": {
+            "like": [
+              "name",
+              "rg-*-*-*"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

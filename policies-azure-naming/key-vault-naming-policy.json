@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json#",
+  "policyType": "Custom",
+  "mode": "All",
+  "displayName": "Key Vault Naming Policy",
+  "description": "Enforces naming convention for key vaults: kv-environment-workload-location.",
+  "policyRule": {
+    "if": {
+      "field": "type",
+      "equals": "Microsoft.KeyVault/vaults"
+    },
+    "then": {
+      "effect": "deny",
+      "details": {
+        "condition": {
+          "not": {
+            "like": [
+              "name",
+              "kv-*-*-*"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
